@@ -1,9 +1,16 @@
 #!/usr/bin/python
 
 import sys
-
 def making_change(amount, denominations):
-  pass 
+    print(amount)
+    options = [5,10,25,50]
+    cache = [1] * (amount + 1)
+
+    for coin in options:
+        for high in range(coin, amount + 1):
+            x = high - coin
+            cache[high] += cache[x]
+    return cache[amount]
 
 
 if __name__ == "__main__":
